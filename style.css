@@ -69,6 +69,21 @@
     border-bottom: 1px solid rgba(255, 236, 255, .1);
 }
 
+.settings {
+    position: fixed;
+    top: 43px;
+    z-index: 999;
+    padding: 10px 30px;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    border-right: 1px solid rgba(255, 236, 255, .1);
+    border-bottom: 1px solid rgba(255, 236, 255, .1);
+}
+
+.settings input {
+    display: block;
+}
+
 @keyframes interference {
     1% {
         opacity: 1;

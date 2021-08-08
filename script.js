@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
         $wrapper = document.querySelector('.wrapper'),
         $shadow = document.querySelector('.shadow'),
         $score = document.querySelector('.score'),
+        $effectInvert = document.querySelector('#invert'),
+        $effectSepia = document.querySelector('#sepia'),
         fieldWidth = $wrapper.offsetWidth,
         fieldHeight = $wrapper.offsetHeight;
 
@@ -50,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let x = e.clientX,
             y = e.clientY;
 
-        $flashlight.style.cssText = `clip-path: circle(${flashlightSize - 4}px at ${x}px ${y}px)`;
+        $flashlight.style.cssText += `clip-path: circle(${flashlightSize - 4}px at ${x}px ${y}px)`;
         $shadow.style.cssText = `
             top: ${y - flashlightSize}px; 
             left: ${x - flashlightSize}px; 
@@ -59,7 +61,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     $wrapper.addEventListener('mousewheel', (e) => {
-        flashlightSize = flashlightSize - (e.deltaY / 100);
+        let diff = flashlightSize - (e.deltaY / 100)
+        flashlightSize = (diff < 100) ? 100 : diff;
+    });
+
+    $effectInvert.addEventListener('input', (e) => {
+        $flashlight.style.cssText += `
+            filter: invert(${e.target.value}%);
+        `;
+    });
+
+    $effectSepia.addEventListener('input', (e) => {
+        $flashlight.style.cssText += `
+            filter: sepia(${e.target.value}%);
+        `;
     });
 
     renderObject();
