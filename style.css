@@ -27,7 +27,8 @@
 .dynamic-image {
     position: relative;
     height: 100vh;
-    animation: interference 10s infinite;
+    opacity: .99;
+    /* animation: interference 10s infinite; */
 }
 
 .shadow {
@@ -38,8 +39,6 @@
 
 .object {
     position: absolute;
-    top: 50%;
-    left: 50%;
 }
 
 .object span {
