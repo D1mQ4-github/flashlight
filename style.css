@@ -18,23 +18,27 @@
     right: 0;
     bottom: 0;
     width: 100%;
+    user-select: none;
 }
 
 .static-image {
     filter: brightness(15%);
+    user-select: none;
 }
 
 .dynamic-image {
     position: relative;
     height: 100vh;
     opacity: .99;
-    /* animation: interference 10s infinite; */
+    animation: interference 5s infinite;
+    user-select: none;
 }
 
 .shadow {
     border-radius: 50%;
     position: absolute;
     box-shadow: inset 0px 0px 50px 40px rgba(0, 0, 0, .9);
+    user-select: none;
 }
 
 .object {
@@ -82,7 +86,7 @@
         opacity: .8;
     }
     7% {
-        opacity: 0;
+        opacity: .1;
     }
     8% {
         opacity: 1;
@@ -91,7 +95,7 @@
         opacity: .7;
     }
     54% {
-        opacity: 0;
+        opacity: .1;
     }
     55% {
         opacity: .6;
@@ -103,40 +107,40 @@
         opacity: 1;
     }
     62% {
-        opacity: 0;
+        opacity: .1;
     }
     70% {
-        opacity: 0;
+        opacity: .1;
     }
     71% {
         opacity: 1;
     }
     80% {
-        opacity: 0;
+        opacity: .1;
     }
     81% {
-        opacity: 0;
+        opacity: .1;
     }
     82% {
         opacity: 1;
     }
     83% {
-        opacity: 0;
+        opacity: .1;
     }
     84% {
         opacity: 1;
     }
     85% {
-        opacity: 0;
+        opacity: .1;
     }
     86% {
-        opacity: 0;
+        opacity: .1;
     }
     87% {
         opacity: 1;
     }
     88% {
-        opacity: 0;
+        opacity: .1;
     }
     89% {
         opacity: 1;

@@ -10,16 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
         fieldWidth = $wrapper.offsetWidth,
         fieldHeight = $wrapper.offsetHeight;
 
-    console.log(fieldHeight, fieldWidth)
-
     $score.textContent = score;
 
     const getMoney = (e) => {
-        const amount = e.target.parentElement.dataset.amount;
-        score += +amount;
-        $score.textContent = score;
-        $object.remove();
-        renderObject();
+        if (e.target.parentElement.dataset.amount) {
+            const amount = e.target.parentElement.dataset.amount;
+            score += +amount;
+            $score.textContent = score;
+            $object.remove();
+            renderObject();
+        }
     }
 
     const getRandomAmount = (max) => {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const renderObject = () => {
-        const amount = getRandomAmount(100);
+        const amount = getRandomAmount(1000);
 
         let object = document.createElement('div'),
             inner = document.createElement('span');
@@ -39,13 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
         object.append(inner);
         $flashlight.append(object);
         object.style.cssText = `
-            top: ${getRandomAmount(fieldHeight)}px; 
-            left: ${getRandomAmount(fieldWidth)}px`;
+            top: ${getRandomAmount(fieldHeight - object.offsetWidth)}px; 
+            left: ${getRandomAmount(fieldWidth - object.offsetHeight)}px`;
 
         $object = document.querySelector('.object');
         $object.addEventListener('click', getMoney);
     }
-    renderObject();
 
     $wrapper.addEventListener('mousemove', (e) => {
         let x = e.clientX,
@@ -60,6 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     $wrapper.addEventListener('mousewheel', (e) => {
-        flashlightSize = flashlightSize + (e.deltaY / 100);
+        flashlightSize = flashlightSize - (e.deltaY / 100);
     });
+
+    renderObject();
 });
