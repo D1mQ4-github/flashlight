@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         $score = document.querySelector('.score'),
         $effectInvert = document.querySelector('#invert'),
         $effectSepia = document.querySelector('#sepia'),
+        $effectSaturate = document.querySelector('#saturate'),
         fieldWidth = $wrapper.offsetWidth,
         fieldHeight = $wrapper.offsetHeight;
 
@@ -74,6 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
     $effectSepia.addEventListener('input', (e) => {
         $flashlight.style.cssText += `
             filter: sepia(${e.target.value}%);
+        `;
+    });
+
+    $effectSaturate.addEventListener('input', (e) => {
+        $flashlight.style.cssText += `
+            filter: saturate(${e.target.value}%);
         `;
     });
 
