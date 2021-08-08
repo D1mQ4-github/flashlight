@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow: hidden;
+}
+
 .wrapper {
     overflow: hidden;
     position: relative;
@@ -69,10 +73,27 @@
     border-bottom: 1px solid rgba(255, 236, 255, .1);
 }
 
-.settings {
-    position: fixed;
+.controlls {
+    position: relative;
     top: 43px;
+}
+
+.controlls .controlls__open {
     z-index: 999;
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    padding: 5px 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.settings {
+    margin-top: 30px;
+    transition: .5s;
+    transform: translateX(-100%);
+    position: fixed;
+    z-index: 555;
     padding: 10px 30px;
     background-color: rgba(0, 0, 0, .5);
     color: #fff;
@@ -80,8 +101,22 @@
     border-bottom: 1px solid rgba(255, 236, 255, .1);
 }
 
+.settings-active {
+    transform: translateX(0%);
+}
+
 .settings input {
     display: block;
+}
+
+.shop {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+
+.shop__btn {
+    margin-top: 10px;
 }
 
 @keyframes interference {

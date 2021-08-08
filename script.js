@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
         $effectInvert = document.querySelector('#invert'),
         $effectSepia = document.querySelector('#sepia'),
         $effectSaturate = document.querySelector('#saturate'),
+        $controlls = document.querySelector('.controlls'),
+        $controllsOpen = document.querySelector('.controlls__open'),
+        $settings = document.querySelector('.settings'),
         fieldWidth = $wrapper.offsetWidth,
         fieldHeight = $wrapper.offsetHeight;
 
@@ -82,6 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
         $flashlight.style.cssText += `
             filter: saturate(${e.target.value}%);
         `;
+    });
+
+    $controllsOpen.addEventListener('click', () => {
+        if ($settings.classList.contains('settings-active')) {
+            $settings.classList.remove('settings-active')
+        } else {
+            $settings.classList.add('settings-active')
+        }
     });
 
     renderObject();
