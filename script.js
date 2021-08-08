@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         $controlls = document.querySelector('.controlls'),
         $controllsOpen = document.querySelector('.controlls__open'),
         $settings = document.querySelector('.settings'),
+        $shop = document.querySelector('.shop'),
         fieldWidth = $wrapper.offsetWidth,
         fieldHeight = $wrapper.offsetHeight;
 
@@ -93,6 +94,26 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             $settings.classList.add('settings-active')
         }
+    });
+
+    const ability = (name, price, cb) => {
+        const btn = document.createElement('button');
+        btn.classList.add('shop__btn');
+        btn.textContent = name;
+        $shop.append(btn);
+
+        if (score < price) {
+            btn.setAttribute('disabled', '');
+        } else {
+            btn.removeAttribute('disabled', '');
+            btn.addEventListener('click', cb);
+            score -= price;
+        }
+    }
+
+    ability('Fix flashlight', 1000, () => {
+        $flashlight.style.cssText += `
+            animation-iteration-count: 1`;
     });
 
     renderObject();
