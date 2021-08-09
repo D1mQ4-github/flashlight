@@ -10,13 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
         $effectInvert = document.querySelector('#invert'),
         $effectSepia = document.querySelector('#sepia'),
         $effectSaturate = document.querySelector('#saturate'),
-        $controlls = document.querySelector('.controlls'),
         $controllsOpen = document.querySelector('.controlls__open'),
         $settings = document.querySelector('.settings'),
         $shop = document.querySelector('.shop'),
         fieldWidth = $wrapper.offsetWidth,
         fieldHeight = $wrapper.offsetHeight;
 
+    //score init
     $score.textContent = score;
 
     const getMoney = (e) => {
@@ -99,22 +99,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const ability = (name, price, cb) => {
         const btn = document.createElement('button');
         btn.classList.add('shop__btn');
-        btn.textContent = name;
+        btn.textContent = `${name} [-${price}$]`;
         $shop.append(btn);
 
         if (score < price) {
             btn.setAttribute('disabled', '');
         } else {
             btn.removeAttribute('disabled', '');
-            btn.addEventListener('click', cb);
-            score -= price;
+            btn.addEventListener('click', () => {
+                cb();
+                score -= price;
+                $score.textContent = score;
+            });
         }
     }
 
-    ability('Fix flashlight', 1000, () => {
-        $flashlight.style.cssText += `
+    //CAREFULL!!! SHIT CODE THERE
+    setInterval(() => {
+        $shop.innerHTML = '';
+        ability('Fix flashlight', 1000, () => {
+            $flashlight.style.cssText += `
             animation-iteration-count: 1`;
-    });
+        });
+        ability('Useless piece of shit', 10000, () => {
+            $flashlight.style.cssText += `
+            animation-iteration-count: 1`;
+        });
+        ability('Useless piece of shit #2', 23000, () => {
+            $flashlight.style.cssText += `
+            animation-iteration-count: 1`;
+        });
+    }, 1000);
 
     renderObject();
 });
